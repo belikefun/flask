@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "result": [
+    {
+      "update_id": 357684280,
+      "message": {
+        "message_id": 1,
+        "from": {
+          "id": 355479683,
+          "is_bot": false,
+          "first_name": "Kupi.banan",
+          "last_name": "Kupi.banan",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 355479683,
+          "first_name": "Kupi.banan",
+          "last_name": "Kupi.banan",
+          "type": "private"
+        },
+        "date": 1555446806,
+        "text": "/start",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 6,
+            "type": "bot_command"
+          }
+        ]
+      }
+    }
+  ]
+}

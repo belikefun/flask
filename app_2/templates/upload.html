@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<style>
+   body {
+    background-image: url(https://www.photohdx.com/images/2016/03/metal-security-lock-background.jpg); /* Путь к фоновому изображению */
+   }
+   #integr {
+    margin-top: -100%;
+
+   }
+   #msg {
+    margin-top: 1%;
+    margin-left: 29%;
+
+   }
+   #zelka{
+    margin-top: 19%;
+    margin-left: 38%;
+   }
+   form {
+    margin-top: 0%;
+    margin-left: 0%;
+   }
+  </style>
+
+</head>
+<body>
+
+
+
+
+<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" >
+    <font font color="white">
+    <strong >Files:</strong><br>
+    <input id="file-picker" type="file" name="file" accept="image/*,audio/*,video/*" multiple>
+    <div id="msg"></div>
+    <input type="submit" value="Upload!" id="upload-button">
+    </font>
+</form>
+
+{% extends 'base.html' %}
+{% block checking %}
+
+    {% for res in results %}
+        <div class="result" id ="integr" >
+            
+            block {{ res['block'] }} : {{ res['result'] }}
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+</body>
+
+<script>
+
+    $("#file-picker").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+        //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'jpg') || (ext == 'png'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+
+        }
+
+
+    } );
+
+</script>
+
+</html>
